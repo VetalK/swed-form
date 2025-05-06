@@ -1,0 +1,102 @@
+:host {
+  display: inline-block;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  color: var(--text-default);
+  background-color: var(--bg-grey);
+
+  &:focus {
+    outline: 2px solid var(--brand-primary);
+    outline-offset: 2px;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &-primary {
+    background-color: var(--brand-primary);
+    color: var(--text-brown);
+
+    &:hover {
+      background-color: var(--brand-primary-light);
+    }
+
+    &:active {
+      background-color: var(--brand-primary-dark);
+    }
+
+    &:disabled {
+      background-color: var(--text-disabled);
+      color: var(--text-muted-light);
+      cursor: not-allowed;
+    }
+  }
+
+  &-secondary {
+    background-color: var(--brand-turquoise);
+    color: var(--text-white);
+
+    &:hover {
+      background-color: var(--brand-turquoise-light);
+    }
+
+    &:active {
+      background-color: var(--brand-turquoise-dark); /* Предполагаемый темный вариант */
+    }
+
+    &:disabled {
+      background-color: var(--text-disabled);
+      color: var(--text-muted-light);
+      cursor: not-allowed;
+    }
+  }
+
+  &-warning {
+    background-color: var(--system-warning);
+    color: var(--text-white);
+
+    &:hover {
+      background-color: var(--system-warning-light);
+    }
+
+    &:active {
+      background-color: var(--system-warning-dark); /* Предполагаемый темный вариант */
+    }
+
+    &:disabled {
+      background-color: var(--text-disabled);
+      color: var(--text-muted-light);
+      cursor: not-allowed;
+    }
+  }
+
+  &-error {
+    background-color: var(--system-error);
+    color: var(--text-white);
+
+    &:hover {
+      background-color: var(--system-error-light);
+    }
+
+    &:active {
+      background-color: var(--system-error-dark); /* Предполагаемый темный вариант */
+    }
+
+    &:disabled {
+      background-color: var(--text-disabled);
+      color: var(--text-muted-light);
+      cursor: not-allowed;
+    }
+  }
+}

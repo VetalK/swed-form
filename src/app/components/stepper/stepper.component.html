@@ -1,0 +1,31 @@
+<div class="stepper-container">
+  @if (currentStep > 1) {
+    <ul class="stepper">
+      @for (step of steps; track step; let i = $index; let last = $last) {
+        @if (!last) {
+          <li class="step" [class.active]="i + 2 === currentStep">
+            {{ i + 1 }}
+          </li>
+        }
+      }
+    </ul>
+  }
+
+  <div class="step-content">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="navigation">
+    @if (currentStep !== 1) {
+      <app-button color="secondary" (action)="prevStep()">
+        Back
+      </app-button>
+    }
+
+    @if(!(currentStep === steps.length)) {
+      <app-button color="primary" (action)="nextStep()">
+        {{ currentStep === steps.length - 1 ? 'Submit' : 'Next' }}
+      </app-button>
+    }
+  </div>
+</div>

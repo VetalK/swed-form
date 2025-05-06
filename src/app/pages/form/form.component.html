@@ -1,0 +1,109 @@
+<form [formGroup]="mainForm">
+  <app-card [hasError]="!!errorIndex()">
+    <app-stepper (cancelNextStep)="setError($event)" [stepCompletionStatus]="stepCompletionStatus()">
+      <app-step>
+        <h2>Welcome to Swedbank!</h2>
+        <p>Thank you for choosing Swedbank. Please fill out the application form below.</p>
+      </app-step>
+
+      <app-step>
+        <h2>Step 1: Choose Your Product</h2>
+        <p>Please select the product you are interested in:</p>
+        <div class="form-group">
+          <label class="radio-group">
+            <input type="radio" formControlName="product" value="credit_card" required>
+            <span></span>
+            Credit Card
+          </label>
+          <label class="radio-group">
+            <input type="radio" formControlName="product" value="small_loan" required>
+            <span></span>
+            Small Loan
+          </label>
+          <label class="radio-group">
+            <input type="radio" formControlName="product" value="car_leasing" required>
+            <span></span>
+            Car Leasing
+          </label>
+          @if (errorIndex() === 2) {
+            <div class="error-message">Please select a product.</div>
+          }
+        </div>
+      </app-step>
+
+      <app-step>
+        <h2>Step 2: Additional Options</h2>
+        <p>Select any additional options you may need:</p>
+        <div class="form-group">
+          <label class="checkbox-group">
+            <input type="checkbox" formControlName="insurance" value="insurance">
+            <span></span>
+            Insurance
+          </label>
+          <label class="checkbox-group">
+            <input type="checkbox" formControlName="sms_alerts" value="sms_alerts">
+            <span></span>
+            SMS Alerts
+            <span class="tooltip" title="Receive important updates via SMS">ⓘ</span>
+          </label>
+          @if (errorIndex() === 3) {
+            <div class="error-message">Please select at least one option if required.</div>
+          }
+        </div>
+      </app-step>
+
+      <app-step>
+        <h2>Step 3: Select a Branch</h2>
+
+        <div class="form-group">
+          <label for="branch">Choose your preferred branch:</label>
+          <select id="branch" formControlName="branch" required>
+            <option value="" disabled>Select a branch</option>
+            <option value="tallinn">Tallinn</option>
+            <option value="tartu">Tartu</option>
+            <option value="narva">Narva</option>
+          </select>
+          @if (errorIndex() === 4) {
+            <div class="error-message">Please select a branch.</div>
+          }
+
+        </div>
+      </app-step>
+
+      <app-step>
+        <h2>Step 4: Additional Notes</h2>
+        <div class="form-group">
+          <label for="notes">Any additional comments?</label>
+          <textarea id="notes" formControlName="notes" rows="4" required></textarea>
+          @if (errorIndex() === 5) {
+            <div class="error-message">Please enter your comments.</div>
+          }
+        </div>
+      </app-step>
+
+      <app-step>
+        <h2>Step 5: How Did You Hear About Us?</h2>
+        <div class="form-group">
+          <label for="referral">How did you hear about us?</label>
+          <input type="text" id="referral" formControlName="referral" required>
+          @if (errorIndex() === 6) {
+            <div class="error-message">Please tell us how you heard about us.</div>
+          }
+        </div>
+      </app-step>
+
+      <app-step>
+        <h2>Summary</h2>
+        <p>Please review the information you have provided.</p>
+        <div id="summary-content">
+          <p><strong>Product:</strong> {{ mainForm.value.product }}</p>
+          <p><strong>Insurance:</strong> {{ mainForm.value.insurance ? 'Yes' : 'No' }}</p>
+          <p><strong>SMS Alerts:</strong> {{ mainForm.value.sms_alerts ? 'Yes' : 'No' }}</p>
+          <p><strong>Branch:</strong> {{ mainForm.value.branch }}</p>
+          <p><strong>Notes:</strong> {{ mainForm.value.notes }}</p>
+          <p><strong>Heard About Us:</strong> {{ mainForm.value.referral }}</p>
+        </div>
+      </app-step>
+    </app-stepper>
+  </app-card>
+</form>
