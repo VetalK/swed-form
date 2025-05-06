@@ -7,7 +7,7 @@ A multi-step application form for Swedbank built with Angular.
 1.  **Clone the repository:**
     ```bash
     git clone <repository-url>
-    cd swedbank-application-form
+    cd swed-form
     ```
 
 2.  **Install npm packages:**
